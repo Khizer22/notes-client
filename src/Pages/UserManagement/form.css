@@ -1,0 +1,40 @@
+.form-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #bae8e8;
+    gap: 5px;
+    padding:50px;
+    min-width:300px;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-container input {
+    margin-bottom: 10px;
+    border: none;
+    padding: 10px;
+}
+
+.form-container button {
+    align-self: center;
+    
+    background-color: #e3f6f5; /* Green */
+    border: none;
+    color:#272343;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+  
+.form-container button:hover {
+    background-color: #ffd803;
+    color: rgb(27, 23, 23);
+}

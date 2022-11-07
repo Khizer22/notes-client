@@ -1,0 +1,24 @@
+.note {
+    background-color: #f3d00b;
+    padding: 10px;
+    min-width: 250px;
+    max-width: 350px;
+    
+    box-shadow: 5px 10px 25px lightgray;
+}
+
+.card, h2 {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    /* background-color: rgb(71, 60, 60); */
+    /* color: #e3f6f5; */
+}
+
+.note-date-text {
+    color:#5e7877;
+}
+
+.note-text {
+    text-decoration: underline;
+}
