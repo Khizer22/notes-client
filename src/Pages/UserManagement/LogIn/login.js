@@ -87,6 +87,10 @@ class Login extends Component {
 
                     <p>{this.state.errorMessage}</p>
                     
+                    <Link to='/register' style={{'pointer':'cursor', 'textAlign':'center'}}>
+                        <p className="form-label" >Click here to Register</p>
+                    </Link>
+      
                 </form> 
 
             </div>

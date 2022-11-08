@@ -1,4 +1,7 @@
-#footer {
-    height: 20px;
-    background-color: red;
+.footer {
+    font-size: small;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    background-color:#e3f6f5;
 }

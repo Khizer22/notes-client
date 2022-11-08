@@ -1,0 +1,94 @@
+input, textarea {
+    font-family: 'Delius', 'Times New Roman', Times, serif;
+}
+
+.edit-note {
+    background-color: #f3d00b;
+    padding: 10px;
+    width: 350px;
+    min-height: 500px;
+    box-shadow: 5px 10px 25px lightgray;
+}
+
+.edit-note input, textarea{
+    color: #2d334a;
+    
+    margin-bottom: 10px;
+    border: none;
+    padding: 10px;
+    background: transparent;
+}
+
+.edit-note input:focus, textarea:focus{
+    outline: none;
+}
+
+.edit-note-title {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    width:95%;
+    font-size:x-large;
+    font-weight: bold;
+}
+
+.edit-note-date-text {
+    /* Show at end */
+
+    color:#5e7877;
+}
+
+.edit-note-text {
+    text-decoration: underline;
+    resize: none;
+    /* font-size: medium; */
+    width: 95%;
+    height: 400px;
+    /* padding: 50px 50px; */
+    /* line-height: 150px; */
+}
+
+.submit-note-button {
+    width: 100%; 
+    background-color: #e6e3f6;
+    border: none;
+    color:#2d334a;
+    padding: 16px 32px;
+    text-decoration: none;
+    /* display: inline-block; */
+    font-size: 16px;
+    font-weight: bold;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.delete-note-button {
+    /* width: 50%;  */
+    background-color: #666094;
+    border: none;
+    color:#d2d7ea;
+    padding: 16px 32px;
+    text-decoration: none;
+    /* display: inline-block; */
+    font-size: 16px;
+    font-weight: bold;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.delete-note-button:hover {
+   background-color: #eb7373;
+   color:#1f2741;
+}
+
+.sub-del-buttons {
+    display: flex;
+}
+  
+.submit-note-button:hover {
+    background-color: #bdb9d6;
+    /* color: rgb(27, 23, 23); */
+}

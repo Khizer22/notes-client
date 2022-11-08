@@ -1,16 +1,30 @@
 import './noteCards.css';
+import { Link } from 'react-router-dom';
+import {useRef} from 'react';
+
+const handleSizeFix = (textBox) => {
+    textBox.style.height = 'inherit';
+    const newHeight = Math.min(textBox.scrollHeight,400)
+    textBox.style.height = `${textBox.scrollHeight}px`;
+}
 
 const NoteCard = ({title,text,dateCreated}) => {
-    //<div className='myBG br3 pa3 ma2 grow bw10 shadow-5'>
+    const ref = useRef(null);
+    const textRef = ref.current;
+    
+    if (textRef){
+        handleSizeFix(textRef);
+    }
+        
     return (
-        <div className='note'>  
-            {/* <img src={`https://robohash.org/{title}?set=set3`} alt='robot heads'/> */}
-            <div>
-                <h2>{title}</h2>
-                <p className='note-text'>{text}</p>
-                <span className='note-date-text'>{dateCreated}</span>
+        <Link to='/editnote' style={{'textDecoration':'none'}}>
+            <div className='note'>  
+                <div>
+                    <h2>{title}</h2>
+                    <p className='note-text' >{text}</p>
+                </div>
             </div>
-        </div>
+        </Link>
     )
 }
 

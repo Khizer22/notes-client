@@ -1,0 +1,19 @@
+/* asd 
+.add-note-button {
+    height: 60px;
+    width: 60px;  
+    border-radius: 50%;
+    background-color: #6a5e99;
+    color: #e3f6f5;
+    cursor: pointer;
+    font-size: medium;
+    position: fixed;
+    left: 11vw;
+    bottom: 12vh;
+}
+
+.add-note-button:hover {
+    background-color: #8f83c3;
+    color: #e3f6f5;
+}
+*/

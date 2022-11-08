@@ -5,6 +5,14 @@
     max-width: 350px;
     
     box-shadow: 5px 10px 25px lightgray;
+
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.note:hover{
+    /* transform: scale(1.1); */
+    background-color: #ffd900;
 }
 
 .card, h2 {
@@ -21,4 +29,10 @@
 
 .note-text {
     text-decoration: underline;
+    /* white-space: initial; */
+    white-space: pre-line;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 400px;
 }

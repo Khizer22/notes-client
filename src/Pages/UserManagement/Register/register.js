@@ -1,12 +1,15 @@
+import { compose } from "@mui/system";
 import { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import '../form.css';
 
 const initialState = {
     signInEmail: "",
     signInPassword: "",
-    errorMessage: "Error message",
-    feedbackMessage: "Feedback message"
+    name: "",
+    errorMessage: "",
+    feedbackMessage: "Feedback message",
+    redirectToLogin: false
 }
 
 class Register extends Component {
@@ -17,8 +20,16 @@ class Register extends Component {
         this.state = initialState;
     }
 
+    componentDidMount = () => {
+        this.setState(initialState);
+    }
+
     onEmailChange = (event) => {
         this.setState({signInEmail: event.target.value});
+    }
+
+    onNameChange = (event) => {
+        this.setState({name: event.target.value});
     }
 
     onPasswordChange = (event) => {
@@ -32,7 +43,7 @@ class Register extends Component {
             return;
         }
         //Check if any field is empty
-        else if(this.state.signInEmail === '' || this.state.signInPassword === ''){
+        else if(this.state.signInEmail === '' || this.state.signInPassword === '' || this.state.name === ''){
             this.setState({errorMessage: "Invalid submission."});
             return;
         }
@@ -41,31 +52,33 @@ class Register extends Component {
 
         
 
-        fetch(`http://localhost:5000/login`, {
+        fetch(`http://localhost:5000/register`, {
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({
                 email: this.state.signInEmail,
+                name: this.state.name,
                 password: this.state.signInPassword
             })
         })
             .then(response => {
                 return response.json();
             })
-            .then(response => {
-                this.setState(initialState);
-                console.log(response);
-                
-                if (response.user_id){     
-                    this.props.logIn(response.user_id);
+            .then(data => {
+                if (data.email && data.name){     
+                    this.setState({redirectToLogin:true});
                 }
                 else {
-                    this.setState({errorMessage: "Wrong email or password"});
+                    this.setState({errorMessage: "Unable to register"});
                 }
-            }).catch(console.log);
+            }).catch(this.setState({errorMessage: "Unable to register"}));
     }
 
     render(){
+
+        if (this.state.redirectToLogin)
+            return <Navigate to="/login"/>;
+
         return (
         <>
             <div>
@@ -80,15 +93,18 @@ class Register extends Component {
                     <input  type="text" placeholder="Enter Email" name="uemail" required onChange={this.onEmailChange}></input>
 
                     <label  htmlFor="uname"><b>Name</b></label>
-                    <input  type="text" placeholder="Enter Name" name="uname" required onChange={this.onEmailChange}></input>
+                    <input  type="text" placeholder="Enter Name" name="uname" required onChange={this.onNameChange}></input>
                                         
                     <label className="form-label" htmlFor="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required onChange={this.onPasswordChange}></input>
-
-                    <label className="form-label" htmlFor="psw"><b>Re-enter Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required onChange={this.onPasswordChange}></input>              
+                    <input type="password" placeholder="Enter Password" name="psw" required onChange={this.onPasswordChange}></input>          
 
                     <button type="button" onClick={this.onSubmitRegister}>Register</button>
+
+                    <p>{this.state.errorMessage}</p>
+
+                    <Link to='/login' style={{'pointer':'cursor', 'textAlign':'center'}}>
+                        <p className="form-label" >Click here to Login</p>
+                    </Link>
                     
                 </form> 
 

@@ -8,3 +8,43 @@
     font-size: calc(10px + 2vmin);
     /* color: #2d334a; */
   }
+
+  .add-note-button {
+     /* align-self: center; */
+    background-color: #e6e3f6;
+    color:#2d334a;
+    border: none;
+    padding: 16px 32px;
+    /* text-align: center; */
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+  .add-note-button:hover {
+    background-color: #bdb9d6;
+    /* color: rgb(27, 23, 23); */
+}
+
+.logout-button {
+    /* align-self: center; */
+    background-color: #e3f6f5;
+    border: none;
+    color:#2d334a;
+    padding: 16px 32px;
+    /* text-align: center; */
+    text-decoration: underline;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+  
+.logout-button:hover {
+    background-color: #ffd803;
+    /* color: rgb(27, 23, 23); */
+}

@@ -10,7 +10,13 @@ class Home extends Component {
 
     render(){
         return  <>
-            <NoteCardList notesInfo={this.props.notesInfo}/>            
+           
+            {this.props.notesInfo.length ? 
+                <NoteCardList notesInfo={this.props.notesInfo} selectNote={this.props.selectNote}/>
+                :
+                <h3>Add Some Notes</h3>
+            }
+            
         </>
     }
 }

@@ -8,6 +8,7 @@ import Home from './Pages/Home/home';
 import Login from './Pages/UserManagement/LogIn/login';
 import NotFound from './Pages/NotFound/notFound';
 import Register from './Pages/UserManagement/Register/register';
+import EditNote from './Pages/EditNote/editNote';
 
 //Componets 
 import Footer from './Components/Footer/footer';
@@ -18,7 +19,8 @@ const initialState = {
   isLoggedIn : false,
   name: null,
   email: null,
-  notesInfo : []
+  notesInfo : [],
+  selectedNote : null
 }
 
 class App extends Component {
@@ -55,7 +57,9 @@ class App extends Component {
     }
   }
 
-  setAllNotesInfo = (token) => {
+  refreshNotesInfo = (token) => {
+    if (!token)
+      token = window.sessionStorage.getItem('token');
 
     //load notes
     fetch('http://localhost:5000/note', {
@@ -74,12 +78,25 @@ class App extends Component {
     .catch(console.log);
   }
 
+  selectNote = (note) => {
+    this.setState({selectedNote : note});
+  }
+
+  clearSelectedNote = () => {
+    this.setState({selectedNote : null});
+  }
+
   logIn = (name, email,token) => {
     this.setState({isLoggedIn:true});
     this.setState({email});
     this.setState({name});
 
-    this.setAllNotesInfo(token);
+    this.refreshNotesInfo(token);
+  }
+
+  logOut = () => {
+    window.sessionStorage.removeItem('token');
+    this.setState(initialState);
   }
 
   getRoutes() {
@@ -87,10 +104,10 @@ class App extends Component {
 
     return (
       <Routes>
-         <Route path="/" element={ this.state.isLoggedIn === false ? <Navigate to="/login" /> : <Home notesInfo={this.state.notesInfo}/> }/>
+         <Route path="/" element={ this.state.isLoggedIn === false ? <Navigate to="/login" /> : <Home notesInfo={this.state.notesInfo} selectNote={this.selectNote}/> }/>
          <Route path="/login" element={this.state.isLoggedIn === true ? <Navigate to="/" /> : <Login logIn={this.logIn} /> } />
-         <Route path="/register" element={<Register />} />
-         <Route path={`/note/${noteID}`} element={<Login />} />
+         <Route path="/register" element={this.state.isLoggedIn === true ? <Navigate to="/" /> : <Register />} />
+         <Route path={`/editnote`} element={this.state.isLoggedIn === false ? <Navigate to="/login" /> : <EditNote selectedNote={this.state.selectedNote} refreshNotesInfo={this.refreshNotesInfo}/>} />
          <Route path="*" element={<NotFound />} />
        </Routes> 
    )
@@ -102,7 +119,7 @@ class App extends Component {
       
         <div className="App">
   
-          <Header/>
+          <Header logOut={this.logOut} isLoggedIn={this.state.isLoggedIn} name={this.state.name} clearSelectedNote={this.clearSelectedNote}/>
   
           <div className='container'>
           {this.getRoutes()}
