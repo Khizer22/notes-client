@@ -14,7 +14,7 @@ import EditNote from './Pages/EditNote/editNote';
 import Footer from './Components/Footer/footer';
 import Header from './Components/Header/header';
 
-const api_url = 'https://secret-lowlands-35717.herokuapp.com/';
+const api_url = 'https://secret-lowlands-35717.herokuapp.com';
 
 const initialState = {
   //TEMP
@@ -39,7 +39,7 @@ class App extends Component {
     
     const token = window.sessionStorage.getItem('token');
     if (token){
-      fetch('http://localhost:5000/login', {
+      fetch(api_url + '/login', {
         method: 'post',
         headers: {
           'Content-type': 'application/json',
@@ -64,7 +64,7 @@ class App extends Component {
       token = window.sessionStorage.getItem('token');
 
     //load notes
-    fetch('http://localhost:5000/note', {
+    fetch(api_url + '/note', {
       method: 'get',
       headers: {
         'Content-type': 'application/json',
