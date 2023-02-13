@@ -32,7 +32,7 @@ class EditNote extends Component {
 
         const token = window.sessionStorage.getItem('token');
 
-        let fetchURL = 'http://localhost:5000/note';
+        let fetchURL = 'https://secret-lowlands-35717.herokuapp.com/note';
         let method = 'post';
 
         //Create if no id
@@ -71,7 +71,7 @@ class EditNote extends Component {
     onDelete = () => {
         const token = window.sessionStorage.getItem('token');
 
-        fetch(`http://localhost:5000/note/${this.state.note_id}`, {
+        fetch(`https://secret-lowlands-35717.herokuapp.com/note/${this.state.note_id}`, {
             method: 'delete',
             headers: {'Content-Type':'application/json',
             'Authorization': 'Bearer ' + token    

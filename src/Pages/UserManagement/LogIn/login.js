@@ -43,7 +43,7 @@ class Login extends Component {
 
         this.setState({feedbackMessage: "Logging in..."});
 
-        fetch(`http://localhost:5000/login`, {
+        fetch(`https://secret-lowlands-35717.herokuapp.com/login`, {
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({

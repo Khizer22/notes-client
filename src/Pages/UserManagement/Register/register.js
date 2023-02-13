@@ -52,7 +52,7 @@ class Register extends Component {
 
         
 
-        fetch(`http://localhost:5000/register`, {
+        fetch(`https://secret-lowlands-35717.herokuapp.com/register`, {
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({
