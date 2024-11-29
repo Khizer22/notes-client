@@ -43,7 +43,7 @@ class Login extends Component {
 
         this.setState({feedbackMessage: "Logging in..."});
 
-        let fetchURL = process.env.API_URL + "/login";
+        let fetchURL = process.env.REACT_APP_API_URL + "/login";
 
         fetch(fetchURL, {
             method: 'post',

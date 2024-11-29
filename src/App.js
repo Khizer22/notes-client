@@ -14,8 +14,7 @@ import EditNote from './Pages/EditNote/editNote';
 import Footer from './Components/Footer/footer';
 import Header from './Components/Header/header';
 
-// const api_url = 'https://secret-lowlands-35717.herokuapp.com';
-const api_url = process.env.API_URL;
+const api_url = process.env.REACT_APP_API_URL;
 
 const initialState = {
   //TEMP

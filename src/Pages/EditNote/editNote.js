@@ -33,7 +33,7 @@ class EditNote extends Component {
         const token = window.sessionStorage.getItem('token');
 
         // let fetchURL = 'https://secret-lowlands-35717.herokuapp.com/note';
-        let fetchURL = process.env.API_URL + "/note";
+        let fetchURL = process.env.REACT_APP_API_URL + "/note";
         let method = 'post';
 
         //Create if no id
@@ -72,7 +72,7 @@ class EditNote extends Component {
     onDelete = () => {
         const token = window.sessionStorage.getItem('token');
 
-        let fetchURL = process.env.API_URL + "/note";
+        let fetchURL = process.env.REACT_APP_API_URL + "/note";
 
         fetch(`${fetchURL}/${this.state.note_id}`, {
             method: 'delete',
