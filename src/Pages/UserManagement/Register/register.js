@@ -50,9 +50,9 @@ class Register extends Component {
 
         this.setState({feedbackMessage: "Logging in..."});
 
-        
+        let fetchURL = process.env.API_URL + "/register";
 
-        fetch(`https://secret-lowlands-35717.herokuapp.com/register`, {
+        fetch(fetchURL, {
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({
