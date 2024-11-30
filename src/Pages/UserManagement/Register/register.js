@@ -50,7 +50,7 @@ class Register extends Component {
 
         this.setState({feedbackMessage: "Logging in..."});
 
-        let fetchURL = process.env.API_URL + "/register";
+        let fetchURL = process.env.REACT_APP_API_URL + "/register";
 
         fetch(fetchURL, {
             method: 'post',
